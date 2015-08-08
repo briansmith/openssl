@@ -1674,8 +1674,12 @@ while (<IN>)
 			}
 		}
 	$sdirs = 0 unless /\\$/;
-        s/fips // if (/^DIRS=/ && !$fips);
+        s/apps // if (/^DIRS=/ && $disabled{"apps"});
+        s/demos // if (/^DIRS=/ && $disabled{"demos"});
         s/engines // if (/^DIRS=/ && $disabled{"engine"});
+        s/fips // if (/^DIRS=/ && !$fips);
+	s/ssl // if (/^DIRS=/ && $disabled{"tls1"});
+	s/test // if (/^DIRS=/ && $disabled{"test"});
 	s/ccgost// if (/^ENGDIRS=/ && $disabled{"gost"});
 	s/^VERSION=.*/VERSION=$version/;
 	s/^MAJOR=.*/MAJOR=$major/;

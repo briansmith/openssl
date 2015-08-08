@@ -510,7 +510,7 @@ struct servent *PASCAL getservbyname(const char *, const char *);
 #   define SHUTDOWN(fd)    { shutdown((fd),0); closesocket(fd); }
 #   define SHUTDOWN2(fd)      { shutdown((fd),2); closesocket(fd); }
 
-#  else
+#  elsif !defined(OPENSSL_NO_SOCK)
 
 #   ifndef NO_SYS_PARAM_H
 #    include <sys/param.h>

@@ -70,6 +70,12 @@ extern "C" {
 
 # define OPENSSL_SYS_UNIX
 
+/* ---------------------- No Operating System (e.g. arm-none-eabi --------- */
+
+# if defined(OPENSSL_SYS_NONE)
+#  undef OPENSSL_SYS_UNIX
+# endif
+
 /* ---------------------- NetWare ----------------------------------------- */
 # if defined(NETWARE) && !defined(OPENSSL_SYS_NETWARE)
 #  undef OPENSSL_SYS_UNIX
